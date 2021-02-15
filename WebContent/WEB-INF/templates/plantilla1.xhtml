@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title><ui:insert name="titulo">Facelets Template</ui:insert></title>
+	<!-- método que se ejecuta antes de cargar la página -->
+	<f:event type="preRenderView"
+		listener="#{plantillaController.verificarSesion()}" />
+</h:head>
+
+<h:body>
+
+	<div id="top">
+		<ui:insert name="top">
+		    top de la página menú estático
+            	 <h:form>
+            	 <p:menubar>
+                  <p:menuitem value="Opción 1"/>
+                  <p:menuitem value="Opción 2"/>
+                  <p:menuitem value="Opción 3"/>
+                  </p:menubar>
+                </h:form>  
+       	</ui:insert>
+	</div>
+
+	<div id="content" class="center_content">
+		<ui:insert name="content">
+                    Aqui va el contenido de la página
+        </ui:insert>
+
+	</div>
+
+	<div id="bottom" style="text-align:center">
+		<ui:insert name="bottom">
+			<p>Agenda de Notas</p>
+		</ui:insert>
+	</div>
+
+</h:body>
+
+</html>

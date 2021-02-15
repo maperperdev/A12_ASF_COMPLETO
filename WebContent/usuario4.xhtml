@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>usuario</title>
+	<h:outputScript library="js" name="spanishLocale.js"/>
+</h:head>
+<h:body>
+	<h:form>
+		<!-- mejor definir un message para cada input 
+		hay que cambiar autoUpdate a false
+		al ejecutar vemos que no salen los mensajes pero si los asteriscos-->
+		<!-- puedo usar en registrar ajax="false" aunque entonces valida todo  -->
+		
+		
+		<p:fieldset legend="Datos Personales">
+		<h:panelGrid columns="3" id="pgDatos">
+			<p:outputLabel for="txtNombre" value="Nombre" />
+			<p:inputText id="txtNombre" value="#{usuarioController.persona.nombre}" required="true" label="Rellene Nombre "></p:inputText>
+			<p:message for="txtNombre"/>
+			
+			
+			<p:outputLabel for="txtApellidos"  value="Apellidos"  />
+			<p:inputText id="txtApellidos" value="#{usuarioController.persona.apellidos}" required="true" label="Rellene Apellidos "></p:inputText>
+			<p:message for="txtApellidos"/>
+			
+			
+			<p:outputLabel  for="txtSexo" value="Sexo" />
+			<p:selectOneRadio id="txtSexo" value="#{usuarioController.persona.sexo}" required="true" label="Rellene sexo ">
+				<f:selectItem itemValue="M" itemLabel="MASCULINO" />
+				<f:selectItem itemValue="F" itemLabel="FEMENINO" />
+			</p:selectOneRadio>
+			<p:message for="txtSexo"/>
+			
+			
+			<p:outputLabel for="rdbFechaNacimiento" value="Fecha Nacimiento" />
+			<p:calendar  id="rdbFechaNacimiento" locale="es" value="#{usuarioController.persona.fechaNacimiento}" required="true" label="Rellene fecha "/>
+			<p:message for="rdbFechaNacimiento"/>
+			
+			</h:panelGrid>
+			<p:commandButton icon="ui-icon-check" value="Registrar" ajax="false"  />
+		</p:fieldset>
+		
+		<p:fieldset legend="Datos de la Cuenta">
+		<h:panelGrid columns="3" id="pgCuenta">
+			<p:outputLabel for="txtUsuario" value="Usuario" />
+			<p:inputText id="txtUsuario" value="#{usuarioController.usuario.usuario}" required="true" label="Rellene usuario "></p:inputText>
+			<p:message for="txtUsuario"/>
+			
+			<p:outputLabel for="clave1" value="Clave" />
+			<p:password id="clave1" value="#{usuarioController.usuario.clave}" required="true" label="Rellene clave "
+						validatorMessage="Las claves no coinciden." weakLabel="Débil" strongLabel="Fuerte"
+						match="clave2" feedback="true" promptLabel="Escriba una clave" 
+			/>
+			<p:message for="clave1"/>
+			
+			<p:outputLabel  for="clave2" value="Repetir Clave" />
+			<p:password id="clave2" value="#{usuarioController.usuario.clave}" required="true" label="Rellene clave de nuevo "></p:password>
+			<p:message for="clave2"/>
+		</h:panelGrid>
+		</p:fieldset>
+		
+	</h:form>
+
+</h:body>
+</html>

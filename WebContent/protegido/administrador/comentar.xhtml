@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Comentar</title>
+
+</h:head>
+<h:body>
+	<ui:composition template="../../WEB-INF/templates/plantilla.xhtml">
+
+		<ui:define name="content">
+			<h3>Comentar Notas</h3>
+			<h:form>
+			<p:messages autoUpdate="true" severity="info,fatal" showDetail="true" showSummary="false"/>
+				<!-- <p:dataTable value="#{comentarController.notas}" var="nota" paginator="true" rows="10"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 rowsPerPageTemplate="5,10,15" currentPageReportTemplate="Página: ({currentPage} de {totalPages})"> -->
+                 <p:dataTable value="#{comentarController.notas}" var="nota" >
+					<p:column headerText="Persona">
+						<h:outputText
+							value="#{nota.persona.apellidos}, #{nota.persona.nombre}" />
+					</p:column>
+
+					<p:column headerText="Categoria">
+						<h:outputText value="#{nota.categoria.nombre}" />
+					</p:column>
+
+					<p:column headerText="Fecha">
+						<h:outputText value="#{nota.fecha}">
+							<f:convertDateTime pattern="dd/MM/yyyy" />
+						</h:outputText>
+
+					</p:column>
+
+					<p:column headerText="Valorar">
+						<h:commandLink value="Valorar"
+							action="#{comentarController.asignar(nota)}" />
+
+						<p:commandLink action="#{comentarController.asignar(nota)}">
+							<h:graphicImage library="images"
+								name="iconfinder_Brightness_131721.png" />
+						</p:commandLink>
+					</p:column>
+
+
+
+				</p:dataTable>
+
+
+			</h:form>
+			
+
+		</ui:define>
+
+	</ui:composition>
+
+
+</h:body>
+</html>

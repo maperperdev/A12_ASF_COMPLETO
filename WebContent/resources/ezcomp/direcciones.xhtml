@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="dirTipo"/>
+        <cc:attribute name="managedBean" required="true"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:panelGrid columns="2">
+            <f:facet name="header">
+                <h:outputText value="#{cc.attrs.dirTipo} Direccion"/>
+            </f:facet>
+            <h:outputLabel for="linea1" value="Linea 1"/>
+            <h:inputText id="linea1" value="#{cc.attrs.managedBean.linea1}"/>
+            <h:outputLabel for="linea2" value="Linea 2"/>
+            <h:inputText id="linea2" value="#{cc.attrs.managedBean.linea2}"/>
+            <h:outputLabel for="ciudad" value="Ciudad"/>
+            <h:inputText id="ciudad" value="#{cc.attrs.managedBean.ciudad}"/>
+            <h:outputLabel for="provincia" value="provincia"/>
+            <h:inputText id="provincia" value="#{cc.attrs.managedBean.provincia}" />
+            <h:outputLabel for="cp" value="Cp"/>
+            <h:inputText id="cp" value="#{cc.attrs.managedBean.cp}" size="5" maxlength="5"/>
+        </h:panelGrid>
+    </cc:implementation>
+</html>
